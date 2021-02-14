@@ -68,9 +68,13 @@
 
 interface
 
+{$REGION 'History'}
+//  14-Feb-2021 - added Winapi to Windows for 'BuildDCUs'
+{$ENDREGION}
+
 uses
 {$IFnDEF FPC}
-  Generics.Collections, Windows,
+  Generics.Collections, Winapi.Windows,
 {$ELSE}
   LCLIntf, LCLType, Fgl,
 {$ENDIF}

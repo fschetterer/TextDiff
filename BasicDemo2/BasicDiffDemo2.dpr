@@ -5,6 +5,9 @@ program BasicDiffDemo2;
   {$MODE Delphi}
 {$ENDIF}
 
+{$REGION 'History'}
+//  14-Feb-2021 - added HashUnit to compile
+{$ENDREGION}
 uses
   {$IFnDEF FPC}
   {$ELSE}
@@ -12,7 +15,8 @@ uses
   {$ENDIF }
   Forms,
   Unit1 in 'Unit1.pas' {Form1},
-  Diff in '..\src\Diff.pas';
+  Diff in '..\src\Diff.pas',
+  HashUnit in '..\src\HashUnit.pas';
 
 {$R *.res}
 

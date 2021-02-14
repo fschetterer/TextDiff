@@ -5,6 +5,10 @@ program BasicDiffDemo1;
   {$MODE Delphi}
 {$ENDIF}
 
+{$REGION 'History'}
+//  14-Feb-2021 - removed unused HashUnit
+{$ENDREGION}
+
 uses
   {$IFnDEF FPC}
   {$ELSE}
@@ -12,7 +16,7 @@ uses
   {$ENDIF }
   Forms,
   Unit1 in 'Unit1.pas' {Form1},
-  HashUnit in '..\src\HashUnit.pas';
+  Diff in '..\src\Diff.pas';
 
 {$R *.res}
 

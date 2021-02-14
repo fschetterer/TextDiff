@@ -5,10 +5,14 @@ unit Unit1;
 {$ENDIF}
 
 interface
+{$REGION 'History'}
+//  14-Feb-2021 - added System.Types to allow compiling in 10.4.1
+{$ENDREGION}
 
 uses
 {$IFnDEF FPC}
   Generics.Collections,
+  System.Types,
 {$ELSE}
   FGL,
 {$ENDIF}

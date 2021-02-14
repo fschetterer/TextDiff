@@ -1,0 +1,80 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{5579097E-003B-4B7E-BC89-E740632620F5}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="src\BuildDCUs.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="BasicDemo1\BasicDiffDemo1.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="BasicDemo2\BasicDiffDemo2.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="BuildDCUs">
+        <MSBuild Projects="src\BuildDCUs.dproj"/>
+    </Target>
+    <Target Name="BuildDCUs:Clean">
+        <MSBuild Projects="src\BuildDCUs.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BuildDCUs:Make">
+        <MSBuild Projects="src\BuildDCUs.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="BasicDiffDemo1">
+        <MSBuild Projects="BasicDemo1\BasicDiffDemo1.dproj"/>
+    </Target>
+    <Target Name="BasicDiffDemo1:Clean">
+        <MSBuild Projects="BasicDemo1\BasicDiffDemo1.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BasicDiffDemo1:Make">
+        <MSBuild Projects="BasicDemo1\BasicDiffDemo1.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="BasicDiffDemo2">
+        <MSBuild Projects="BasicDemo2\BasicDiffDemo2.dproj"/>
+    </Target>
+    <Target Name="BasicDiffDemo2:Clean">
+        <MSBuild Projects="BasicDemo2\BasicDiffDemo2.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BasicDiffDemo2:Make">
+        <MSBuild Projects="BasicDemo2\BasicDiffDemo2.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="BuildDCUs;BasicDiffDemo1;BasicDiffDemo2"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="BuildDCUs:Clean;BasicDiffDemo1:Clean;BasicDiffDemo2:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="BuildDCUs:Make;BasicDiffDemo1:Make;BasicDiffDemo2:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+    <ItemGroup Condition="'$(BuildGroup)'=='Build DCUs'">
+        <BuildGroupProject Include="src\BuildDCUs.dproj">
+            <ProjectGuid>{51BC8866-0B15-43D7-93BC-FE478857414B}</ProjectGuid>
+            <Configurations>Debug;Release</Configurations>
+            <Platforms>Win32;Win64</Platforms>
+            <Enabled>True</Enabled>
+        </BuildGroupProject>
+        <BuildGroupProject Include="BasicDemo1\BasicDiffDemo1.dproj">
+            <ProjectGuid>{EDF59D45-F679-48FD-9B94-8605BE01CBBE}</ProjectGuid>
+            <Configurations>Debug</Configurations>
+            <Platforms>Win64</Platforms>
+            <Enabled>False</Enabled>
+        </BuildGroupProject>
+        <BuildGroupProject Include="BasicDemo2\BasicDiffDemo2.dproj">
+            <ProjectGuid>{E6DE4685-428D-4633-9CD2-E7F22B59792A}</ProjectGuid>
+            <Configurations>Debug</Configurations>
+            <Platforms>Win64</Platforms>
+            <Enabled>False</Enabled>
+        </BuildGroupProject>
+    </ItemGroup>
+</Project>
